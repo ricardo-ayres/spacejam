@@ -1,6 +1,6 @@
 # SpaceJam 34-key Layout
 
-!(SpaceJam)[spacejam.png]
+![SpaceJam](spacejam.png)
 
 This is a crazy small layout based on space as a multi-purpose key.
 
