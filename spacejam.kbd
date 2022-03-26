@@ -1,0 +1,73 @@
+#| --------------------------------------------------------------------------
+
+                           Spacejam 34-key layout
+
+(deflayer name
+  _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _
+                           _
+)
+
+  -------------------------------------------------------------------------- |#
+
+(defcfg
+  input (device-file "/dev/input/by-id/usb-BY_Tech_Usb_Gaming_Keyboard-event-kbd")
+  output (uinput-sink "SpaceJam")
+  fallthrough false
+)
+
+(defalias
+  ;; Home row mods
+  ms (tap-hold-next-release 1000 s lalt)
+  md (tap-hold-next-release 1000 d lctl)
+  mf (tap-hold-next-release 1000 f lsft)
+  mg (tap-hold-next-release 1000 g lmet)
+
+  mh (tap-hold-next-release 1000 h lmet)
+  mj (tap-hold-next-release 1000 j lsft)
+  mk (tap-hold-next-release 1000 k lctl)
+  ml (tap-hold-next-release 1000 l lalt)
+
+  ;; Utils
+  cpy C-c
+  pst C-v
+  cut C-x
+  und C-z
+  fnd C-f
+
+  ;; spacejam ;)
+  sjm (tap-next-release spc (layer-toggle spacejam))
+
+  ;; esc/fn
+  fe (tap-next-release esc (layer-toggle fn))
+)
+
+(defsrc
+  tab  q    w    e    r    t    y    u    i    o    p
+  caps a    s    d    f    g    h    j    k    l    ;
+  lsft z    x    c    v    b    n    m    ,    .    /
+                           spc
+)
+
+;; default layer
+(deflayer default
+  grv  q    w    e    r    t    y    u    i    o    p
+  @fe  a    @ms  @md  @mf  @mg  @mh  @mj  @mk  @ml  ret
+  tab  z    x    c    v    b    n    m    ,    .    ralt
+                           @sjm
+)
+
+(deflayer spacejam
+  _    1    2    3    4    5    6    7    8    9    0
+  _    _    _    _    _    _    _    _    _    _    bspc
+  _    _    \\   ;    apos min  =    /    [    ]    _
+                           _
+)
+
+(deflayer fn
+  _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10
+  _    f11  f12  _    _    _    lft  down up   rght del
+  _    _    _    _    _    _    home pgdn pgup end  ins
+                           _
+)
